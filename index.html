@@ -149,6 +149,12 @@
     Kliknij, jeśli tęsknisz 🥺
 </button>
 
+<!-- Audio bez autoplay -->
+<audio id="bg-music" loop>
+    <source src="love song.mp3" type="audio/mpeg" />
+    Twoja przeglądarka nie obsługuje odtwarzania audio.
+</audio>
+
 <!-- Twój countdown JS -->
 <script src="script.js"></script>
 
@@ -175,17 +181,22 @@
     setInterval(createHeart, 300);
 </script>
 
-<!-- Unoszące się serduszka z dołu do góry po kliknięciu -->
+<!-- Unoszące się serduszka i odtwarzanie muzyki po kliknięciu -->
 <script>
     const button = document.getElementById('loveButton');
+    const music = document.getElementById('bg-music');
 
     button.addEventListener('click', () => {
         alert('️Bardzo cie kocham skarbie, jesteś moim całym światem, jesteś najukochanszą dziewczyna jaką mogłem sobie wyobrazić <3 kocham Cię bejbiczku bejbiku bebiku księżniczko moja, moje słodkie maleństwo <333');
 
+        // Uruchom muzykę (może wymagać kliknięcia użytkownika)
+        music.play().catch(() => {
+            console.log("Odtwarzanie muzyki zablokowane przez przeglądarkę.");
+        });
+
         for (let i = 0; i < 200; i++) {
             createFloatingHeart(i);
         }
-
     });
 
     function createFloatingHeart(i) {
@@ -204,11 +215,6 @@
         });
     }
 </script>
-
-<audio id="bg-music" autoplay loop>
-    <source src="love%20song.mp3" type="audio/mpeg">
-    Twoja przeglądarka nie obsługuje odtwarzania audio.
-</audio>
 
 </body>
 </html>
