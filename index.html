@@ -2,24 +2,36 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8" />
-    <title>Odliczanie do spotkania</title>
+    <title>Countdown do spotkania</title>
     <style>
-        body {
+        /* Styl całej strony */
+        body, html {
+            height: 100%;
+            margin: 0;
+            background-color: #ffb6c1; /* jasnoróżowy */
+            display: flex;
+            justify-content: center; /* poziome wyśrodkowanie */
+            align-items: center;     /* pionowe wyśrodkowanie */
             font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f2f2f2;
-            padding-top: 100px;
-        }
-        #countdown {
-            font-size: 2em;
             color: #333;
+            font-size: 32px; /* powiększona czcionka */
+            text-align: center;
+            flex-direction: column;
+        }
+
+        #countdown {
+            margin-top: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-<h1>Odliczanie do naszego spotkania ❤️</h1>
-<div id="countdown">Ładowanie...</div>
 
-<script src="script.js"></script>
-</body>
-</html>
+<h1>Już niedługo się spotkamy! ❤️</h1>
+
+<div id="countdown">
+    <span id="days">0</span> dni
+    <span id="hours">0</span> godzin
+    <span id="minutes">0</span> minut
+    <span id="seconds">0</span> sekund
+</div>
