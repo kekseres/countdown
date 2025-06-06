@@ -2,7 +2,7 @@ function updateCountdown() {
     const now = new Date();
     const nowUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
 
-    const meetingDate = new Date(2025, 5, 27, 20, 0, 0); // Rok, Miesiąc (od 0), Dzień, Godzina, Minuta, Sekunda
+    const meetingDate = new Date(2025, 5, 18, 20, 0, 0);
 
     const diff = meetingDateUtc - nowUtc;
 
