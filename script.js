@@ -1,4 +1,4 @@
-const meetingDate = new Date(2025, 5, 27, 20, 0, 0); // 27 czerwca 2025, godz. 20:00
+const meetingDate = new Date(2025, 5, 19, 20, 0, 0); // 27 czerwca 2025, godz. 20:00
 
 function updateCountdown() {
     const now = new Date();
