@@ -1,4 +1,8 @@
+// Twoja konkretna data spotkania: 19 czerwca 2025, 20:00
+const meetingDate = new Date(2025, 5, 19, 20, 0, 0); // miesiące liczymy od 0 (czyli 5 = czerwiec)
+
 function updateCountdown() {
+    // DEBUG: pokaż wartości w konsoli
     console.log("Aktualny czas:", new Date());
     console.log("Spotkanie:", meetingDate);
     console.log("Różnica (ms):", meetingDate - new Date());
@@ -25,9 +29,12 @@ function updateCountdown() {
     document.getElementById("minutes").textContent = minutes;
     document.getElementById("seconds").textContent = seconds;
 
-    document.getElementById("minutesTotal").textContent = `Łącznie: ${totalMinutes} minut`;
-    document.getElementById("secondsTotal").textContent = `Łącznie: ${totalSeconds} sekund`;
+    document.getElementById("minutesTotal").textContent = `${totalMinutes} minut`;
+    document.getElementById("secondsTotal").textContent = `${totalSeconds} sekund`;
 }
 
+// Uruchom co sekundę
 setInterval(updateCountdown, 1000);
+
+// Pierwsze wywołanie natychmiast
 updateCountdown();
