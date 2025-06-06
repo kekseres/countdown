@@ -87,6 +87,38 @@
             height: 307px;
             width: auto;
         }
+
+        /* Animacja spadających serduszek */
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Animacja unoszących się serduszek z przycisku */
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .button-heart {
+            position: fixed;
+            pointer-events: none;
+            animation: floatUp 2s forwards;
+            font-size: 24px;
+            color: #d1006b;
+            user-select: none;
+            z-index: 10000;
+            /* lekki cień dla ładniejszego efektu */
+            text-shadow: 0 0 5px #d1006b;
+        }
     </style>
 </head>
 <body>
@@ -112,7 +144,7 @@
     <img src="myphoto1.jpg" alt="Drugie zdjęcie" class="heart-beat-slow" />
 </div>
 
-<button onclick="alert('️Bardzo cie kocham skarbie, jesteś moim całym światem, jesteś najukochanszą dziewczyna jaką mogłem sobie wyobrazić <3 kocham Cię bejbiczku bejbiku bebiku księżniczko moja, moje słodkie maleństwo <333')"
+<button id="loveButton"
         style="margin-top: 30px; padding: 15px 25px; font-size: 20px; border-radius: 15px; background-color: #ff69b4; color: white; border: none; cursor: pointer;">
     Kliknij, jeśli tęsknisz 🥺
 </button>
@@ -128,9 +160,9 @@
         heart.style.position = "fixed";
         heart.style.left = Math.random() * 100 + "vw";
         heart.style.top = "-2em";
-        heart.style.fontSize = Math.random() * 24 + 24 + "px";
+        heart.style.fontSize = (Math.random() * 24 + 24) + "px";
         heart.style.opacity = Math.random();
-        heart.style.animation = "fall 5s linear infinite";
+        heart.style.animation = "fall 5s linear forwards";
         heart.style.pointerEvents = "none";
         heart.style.zIndex = 9999;
         document.body.appendChild(heart);
@@ -141,16 +173,41 @@
     }
 
     setInterval(createHeart, 300);
+</script>
 
-    const style = document.createElement("style");
-    style.innerHTML = `
-    @keyframes fall {
-        to {
-            transform: translateY(100vh);
-            opacity: 0;
+<!-- Animacja unoszących się serduszek z przycisku -->
+<script>
+    const button = document.getElementById('loveButton');
+
+    button.addEventListener('click', () => {
+        alert('️Bardzo cie kocham skarbie, jesteś moim całym światem, jesteś najukochanszą dziewczyna jaką mogłem sobie wyobrazić <3 kocham Cię bejbiczku bejbiku bebiku księżniczko moja, moje słodkie maleństwo <333');
+
+        // Tworzymy animowane serduszka z miejsca przycisku
+        for(let i = 0; i < 8; i++) {
+            createFloatingHeart(i);
         }
-    }`;
-    document.head.appendChild(style);
+    });
+
+    function createFloatingHeart(index) {
+        const heart = document.createElement('div');
+        heart.innerText = '💖';
+        heart.classList.add('button-heart');
+
+        // Pozycjonowanie na środku przycisku z lekkim rozrzutem
+        const rect = button.getBoundingClientRect();
+        heart.style.left = (rect.left + rect.width / 2 + (Math.random() - 0.5) * 80) + 'px';
+        heart.style.top = (rect.top + rect.height / 2 + (Math.random() - 0.5) * 20) + 'px';
+
+        // Opóźnienie animacji dla rozłożenia efektu
+        heart.style.animationDelay = (index * 0.15) + 's';
+
+        document.body.appendChild(heart);
+
+        // Usuwamy po animacji
+        heart.addEventListener('animationend', () => {
+            heart.remove();
+        });
+    }
 </script>
 
 </body>
