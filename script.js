@@ -23,8 +23,8 @@ function updateCountdown() {
     document.getElementById("minutes").textContent = minutes;
     document.getElementById("seconds").textContent = seconds;
 
-    document.getElementById("totalMinutes").textContent = `Łącznie: ${totalMinutes} minut`;
-    document.getElementById("totalSeconds").textContent = `Łącznie: ${totalSeconds} sekund`;
+    document.getElementById("minutesTotal").textContent = `Łącznie: ${totalMinutes} minut`;
+    document.getElementById("secondsTotal").textContent = `Łącznie: ${totalSeconds} sekund`;
 }
 
 setInterval(updateCountdown, 1000);
