@@ -44,8 +44,23 @@
             }
         }
 
+        /* Delikatniejsza animacja dla drugiego zdjęcia */
+        @keyframes heartbeat-slow {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
         .heart-beat {
             animation: heartbeat 1.5s infinite;
+            transform-origin: center;
+        }
+
+        .heart-beat-slow {
+            animation: heartbeat-slow 3s infinite;
             transform-origin: center;
         }
 
@@ -60,10 +75,21 @@
         }
 
         #photos-container img {
-            width: 300px;
-            max-width: 90%;
             border-radius: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            object-fit: cover;
+        }
+
+        /* myphoto.jpg - portret, dopasowane proporcje */
+        #photos-container img:first-child {
+            width: 230px;  /* proporcjonalnie do 1536x2048 */
+            height: 307px;
+        }
+
+        /* myphoto1.jpg - panorama, dopasowane proporcje */
+        #photos-container img:last-child {
+            width: 300px; /* szerokość trochę większa bo panorama */
+            height: 169px;
         }
     </style>
 
@@ -88,7 +114,7 @@
 
 <div id="photos-container">
     <img src="myphoto.jpg" alt="Nasze zdjęcie" class="heart-beat" />
-    <img src="myphoto1.jpg" alt="Drugie zdjęcie" />
+    <img src="myphoto1.jpg" alt="Drugie zdjęcie" class="heart-beat-slow" />
 </div>
 
 <script src="script.js"></script>
