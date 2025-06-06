@@ -2,7 +2,7 @@ function updateCountdown() {
     const now = new Date();
     const nowUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
 
-    const meetingDateUtc = Date.UTC(2025, 5, 27, 20, 0, 0); // miesiące liczone od 0, więc 5 = czerwiec
+    const meetingDateUtc = Date.UTC(2025, 5, 19, 20, 0, 0); // miesiące liczone od 0, więc 5 = czerwiec
 
     const diff = meetingDateUtc - nowUtc;
 
