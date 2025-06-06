@@ -1,22 +1,24 @@
-// 🔧 TUTAJ ustaw datę i godzinę spotkania
-const meetingDate = new Date("2025-06-27T20:00:00"); // YYYY-MM-DD T HH:MM:SS
+// Ustaw tutaj datę spotkania w formacie RRRR-MM-DDTHH:MM:SS
+const meetingDate = new Date("2025-06-27T20:00:00");
 
 function updateCountdown() {
     const now = new Date();
-    const timeDiff = meetingDate - now;
+    const diff = meetingDate - now;
 
-    if (timeDiff <= 0) {
-        document.getElementById("countdown").innerHTML = "Już się spotkaliśmy! 🥰";
+    if(diff <= 0) {
+        document.getElementById("countdown").innerHTML = "Spotkanie już trwa lub minęło!";
         return;
     }
 
-    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
-    const seconds = Math.floor((timeDiff / 1000) % 60);
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
 
-    document.getElementById("countdown").innerHTML =
-        `${days} dni, ${hours} godz., ${minutes} min., ${seconds} sek.`;
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
 }
 
 // Aktualizuj co sekundę
