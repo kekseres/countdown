@@ -96,14 +96,14 @@
             }
         }
 
-        /* Animacja unoszących się serduszek z przycisku */
+        /* Animacja unoszących się serduszek z przycisku i ekranu */
         @keyframes floatUp {
             0% {
                 transform: translateY(0) scale(1);
                 opacity: 1;
             }
             100% {
-                transform: translateY(-100px) scale(1.5);
+                transform: translateY(-150px) scale(1.5);
                 opacity: 0;
             }
         }
@@ -111,12 +111,11 @@
         .button-heart {
             position: fixed;
             pointer-events: none;
-            animation: floatUp 2s forwards;
+            animation: floatUp 3s forwards;
             font-size: 24px;
             color: #d1006b;
             user-select: none;
             z-index: 10000;
-            /* lekki cień dla ładniejszego efektu */
             text-shadow: 0 0 5px #d1006b;
         }
     </style>
@@ -175,35 +174,37 @@
     setInterval(createHeart, 300);
 </script>
 
-<!-- Animacja unoszących się serduszek z przycisku -->
+<!-- Animacja unoszących się serduszek po kliknięciu przycisku -->
 <script>
     const button = document.getElementById('loveButton');
 
     button.addEventListener('click', () => {
         alert('️Bardzo cie kocham skarbie, jesteś moim całym światem, jesteś najukochanszą dziewczyna jaką mogłem sobie wyobrazić <3 kocham Cię bejbiczku bejbiku bebiku księżniczko moja, moje słodkie maleństwo <333');
 
-        // Tworzymy animowane serduszka z miejsca przycisku
-        for(let i = 0; i < 8; i++) {
-            createFloatingHeart(i);
+        // Tworzymy 100 unoszących się serduszek rozmieszczonych losowo na całym ekranie
+        for(let i = 0; i < 100; i++) {
+            createFloatingHeartFullScreen(i);
         }
     });
 
-    function createFloatingHeart(index) {
+    function createFloatingHeartFullScreen(index) {
         const heart = document.createElement('div');
         heart.innerText = '💖';
         heart.classList.add('button-heart');
 
-        // Pozycjonowanie na środku przycisku z lekkim rozrzutem
-        const rect = button.getBoundingClientRect();
-        heart.style.left = (rect.left + rect.width / 2 + (Math.random() - 0.5) * 80) + 'px';
-        heart.style.top = (rect.top + rect.height / 2 + (Math.random() - 0.5) * 20) + 'px';
+        // Losowa pozycja na całym ekranie (w viewport units)
+        heart.style.left = (Math.random() * 100) + 'vw';
+        heart.style.top = (Math.random() * 100) + 'vh';
 
-        // Opóźnienie animacji dla rozłożenia efektu
-        heart.style.animationDelay = (index * 0.15) + 's';
+        // Losowa wielkość serduszka 16px - 40px
+        heart.style.fontSize = (16 + Math.random() * 24) + 'px';
+
+        // Opóźnienie animacji żeby się fajnie rozłożyły w czasie
+        heart.style.animationDelay = (index * 0.06) + 's';
 
         document.body.appendChild(heart);
 
-        // Usuwamy po animacji
+        // Usuwamy serduszko po zakończeniu animacji
         heart.addEventListener('animationend', () => {
             heart.remove();
         });
