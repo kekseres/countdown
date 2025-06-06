@@ -96,20 +96,21 @@
             }
         }
 
-        /* Animacja unoszących się serduszek z przycisku i ekranu */
+        /* Animacja unoszenia do góry */
         @keyframes floatUp {
             0% {
                 transform: translateY(0) scale(1);
                 opacity: 1;
             }
             100% {
-                transform: translateY(-150px) scale(1.5);
+                transform: translateY(-120vh) scale(1.2);
                 opacity: 0;
             }
         }
 
         .button-heart {
             position: fixed;
+            bottom: 0;
             pointer-events: none;
             animation: floatUp 3s forwards;
             font-size: 24px;
@@ -174,37 +175,29 @@
     setInterval(createHeart, 300);
 </script>
 
-<!-- Animacja unoszących się serduszek po kliknięciu przycisku -->
+<!-- Unoszące się serduszka z dołu do góry po kliknięciu -->
 <script>
     const button = document.getElementById('loveButton');
 
     button.addEventListener('click', () => {
         alert('️Bardzo cie kocham skarbie, jesteś moim całym światem, jesteś najukochanszą dziewczyna jaką mogłem sobie wyobrazić <3 kocham Cię bejbiczku bejbiku bebiku księżniczko moja, moje słodkie maleństwo <333');
 
-        // Tworzymy 100 unoszących się serduszek rozmieszczonych losowo na całym ekranie
-        for(let i = 0; i < 100; i++) {
-            createFloatingHeartFullScreen(i);
+        for (let i = 0; i < 50; i++) {
+            createFloatingHeart(i);
         }
     });
 
-    function createFloatingHeartFullScreen(index) {
+    function createFloatingHeart(i) {
         const heart = document.createElement('div');
         heart.innerText = '💖';
         heart.classList.add('button-heart');
 
-        // Losowa pozycja na całym ekranie (w viewport units)
         heart.style.left = (Math.random() * 100) + 'vw';
-        heart.style.top = (Math.random() * 100) + 'vh';
-
-        // Losowa wielkość serduszka 16px - 40px
         heart.style.fontSize = (16 + Math.random() * 24) + 'px';
-
-        // Opóźnienie animacji żeby się fajnie rozłożyły w czasie
-        heart.style.animationDelay = (index * 0.06) + 's';
+        heart.style.animationDelay = (Math.random() * 0.5) + 's';
 
         document.body.appendChild(heart);
 
-        // Usuwamy serduszko po zakończeniu animacji
         heart.addEventListener('animationend', () => {
             heart.remove();
         });
