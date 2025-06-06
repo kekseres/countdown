@@ -1,11 +1,10 @@
 function updateCountdown() {
+    console.log("Aktualny czas:", new Date());
+    console.log("Spotkanie:", meetingDate);
+    console.log("Różnica (ms):", meetingDate - new Date());
+
     const now = new Date();
-    const nowUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
-
-    const meetingDate = new Date(2025, 5, 19, 20, 0, 0);
-
-    const diff = meetingDateUtc - nowUtc;
-
+    const diff = meetingDate - now;
 
     if (diff <= 0) {
         document.getElementById("countdown").innerHTML = "Spotkanie już trwa lub minęło!";
