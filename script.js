@@ -6,6 +6,7 @@ function updateCountdown() {
 
     if (diff <= 0) {
         document.getElementById("countdown").innerHTML = "Spotkanie już trwa lub minęło!";
+        document.getElementById("converted").innerHTML = "";
         return;
     }
 
@@ -14,10 +15,16 @@ function updateCountdown() {
     const minutes = Math.floor((diff / (1000 * 60)) % 60);
     const seconds = Math.floor((diff / 1000) % 60);
 
+    const totalMinutes = Math.floor(diff / (1000 * 60));
+    const totalSeconds = Math.floor(diff / 1000);
+
     document.getElementById("days").textContent = days;
     document.getElementById("hours").textContent = hours;
     document.getElementById("minutes").textContent = minutes;
     document.getElementById("seconds").textContent = seconds;
+
+    document.getElementById("totalMinutes").textContent = `Łącznie: ${totalMinutes} minut`;
+    document.getElementById("totalSeconds").textContent = `Łącznie: ${totalSeconds} sekund`;
 }
 
 setInterval(updateCountdown, 1000);

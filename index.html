@@ -17,9 +17,21 @@
             text-align: center;
             flex-direction: column;
         }
+
         #countdown {
             margin-top: 20px;
             font-weight: bold;
+        }
+
+        #converted {
+            margin-top: 10px;
+            font-size: 24px;
+        }
+
+        #love {
+            margin-top: 40px;
+            font-size: 48px;
+            color: #d1006b;
         }
     </style>
 </head>
@@ -34,8 +46,13 @@
     <span id="seconds">0</span> sekund
 </div>
 
-<!-- Podłączamy skrypt -->
-<script src="script.js"></script>
+<div id="converted">
+    <div id="totalMinutes">Łącznie: 0 minut</div>
+    <div id="totalSeconds">Łącznie: 0 sekund</div>
+</div>
 
+<div id="love">Kocham Cię ❤️❤️❤️</div>
+
+<script src="script.js"></script>
 </body>
 </html>
