@@ -1,12 +1,10 @@
+const meetingDate = new Date(2025, 5, 27, 20, 0, 0); // 27 czerwca 2025, godz. 20:00
+
 function updateCountdown() {
     const now = new Date();
     const diff = meetingDate - now;
 
-    console.log("Teraz:", now);
-    console.log("Spotkanie:", meetingDate);
-    console.log("Różnica (ms):", diff);
-
-    if(diff <= 0) {
+    if (diff <= 0) {
         document.getElementById("countdown").innerHTML = "Spotkanie już trwa lub minęło!";
         return;
     }
@@ -16,10 +14,11 @@ function updateCountdown() {
     const minutes = Math.floor((diff / (1000 * 60)) % 60);
     const seconds = Math.floor((diff / 1000) % 60);
 
-    console.log(days, hours, minutes, seconds);
-
     document.getElementById("days").textContent = days;
     document.getElementById("hours").textContent = hours;
     document.getElementById("minutes").textContent = minutes;
     document.getElementById("seconds").textContent = seconds;
 }
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
