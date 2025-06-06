@@ -48,6 +48,23 @@
             animation: heartbeat 1.5s infinite;
             transform-origin: center;
         }
+
+        /* Kontener na zdjęcia - ułożenie obok siebie */
+        #photos-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        #photos-container img {
+            width: 300px;
+            max-width: 90%;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
     </style>
 
 </head>
@@ -69,9 +86,10 @@
 
 <div id="love">❤️❤️❤️Kocham Cię Bejbiczku ❤️❤️❤️</div>
 
-<img src="myphoto.jpg" alt="Nasze zdjęcie"
-     class="heart-beat"
-     style="margin-top: 30px; width: 300px; max-width: 90%; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: block; margin-left: auto; margin-right: auto;" />
+<div id="photos-container">
+    <img src="myphoto.jpg" alt="Nasze zdjęcie" class="heart-beat" />
+    <img src="myphoto1.jpg" alt="Drugie zdjęcie" />
+</div>
 
 <script src="script.js"></script>
 </body>
