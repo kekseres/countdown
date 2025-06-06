@@ -1,5 +1,6 @@
 // Ustaw tutaj datę spotkania w formacie RRRR-MM-DDTHH:MM:SS
-const meetingDate = new Date("2025-06-27T20:00:00");
+const meetingDate = new Date("2025-06-27T20:00:00+02:00");
+
 
 function updateCountdown() {
     const now = new Date();
