@@ -32,20 +32,38 @@ function updateCountdown() {
     document.getElementById("minutesTotal").textContent = `${totalMinutes} minut`;
     document.getElementById("secondsTotal").textContent = `${totalSeconds} sekund`;
 }
-// Data rozpoczęcia związku (Rok, Miesiąc-1, Dzień)
-const startDate = new Date(2023, 7, 1); // 1 sierpnia 2023 (miesiące liczone od 0)
+const startDate = new Date(2024, 11, 30); // 30 grudnia 2024
 
-// Funkcja licząca dni razem
 function updateTogetherDays() {
     const now = new Date();
-    const diff = now - startDate;
-    if(diff < 0){
+    if (now < startDate) {
         document.getElementById('togetherDays').textContent = "Jeszcze się nie znamy 😢";
         return;
     }
-    const daysTogether = Math.floor(diff / (1000 * 60 * 60 * 24));
-    document.getElementById('togetherDays').textContent = `Jesteśmy razem od ${daysTogether} dni ❤️`;
+
+    let years = now.getFullYear() - startDate.getFullYear();
+    let months = now.getMonth() - startDate.getMonth();
+    let days = now.getDate() - startDate.getDate();
+
+    if (days < 0) {
+        months -= 1;
+        // Obliczamy liczbę dni w poprzednim miesiącu
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += prevMonth.getDate();
+    }
+
+    if (months < 0) {
+        years -= 1;
+        months += 12;
+    }
+
+    // Liczymy całkowite miesiące razem (bez lat, czyli lata * 12 + miesiące)
+    const totalMonths = years * 12 + months;
+
+    document.getElementById('togetherDays').textContent =
+        `Jesteśmy razem od ${totalMonths} miesięcy i ${days} dni ❤️`;
 }
+
 
 // Wywołaj przy starcie i aktualizuj co godzinę
 updateTogetherDays();
