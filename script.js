@@ -1,5 +1,5 @@
 // Twoja konkretna data spotkania: 19 czerwca 2025, 20:00
-const meetingDate = new Date(2025, 5, 19, 20, 0, 0); // miesiące liczymy od 0 (czyli 5 = czerwiec)
+const meetingDate = new Date(2025, 5, 29, 20, 0, 0); // miesiące liczymy od 0 (czyli 5 = czerwiec)
 
 function updateCountdown() {
     // DEBUG: pokaż wartości w konsoli
